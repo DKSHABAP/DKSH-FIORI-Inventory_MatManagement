@@ -1,0 +1,131 @@
+<core:FragmentDefinition xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns="sap.m">
+	<VBox>
+		<f:SimpleForm minWidth="1024" layout="ResponsiveGridLayout" maxContainerCols="2" editable="true" labelSpanL="4" labelSpanM="4"
+			emptySpanL="1" emptySpanM="1" columnsL="2" columnsM="2">
+			<f:content>
+				<core:Title/>
+				<Label text="Plant" design="Bold" required="true"></Label>
+				<MultiInput value="" placeholder="Enter Plant" showValueHelp="true" valueHelpRequest="valueHelpRequestPlant"
+					valueState="{baseModel>/EndingStckplantValueState}" tokenUpdate="onDeleteExpStckPlant" id="ExpStckPlantFromId"/>
+				<Label text="SLoc" design="Bold"></Label>
+				<!--<HBox alignContent="SpaceAround">-->
+				<MultiInput value="" tokenUpdate="onDeleteStoLoc" placeholder="From" showValueHelp="true" valueHelpRequest="valueHelpRequestStoLoc"
+					id="ExpStckSLocFromId"/>
+				<MultiInput value="" placeholder="To" showValueHelp="true" valueHelpRequest="valueHelpRequestStoLoc" enabled="{baseModel>/enableSLocTo}"
+					id="ExpStckSLocToId" tokenUpdate="onDeleteStoLoc"/>
+				<!--</HBox>-->
+				<Label text="Material Group" design="Bold" required="true"></Label>
+				<!--<HBox alignContent="SpaceAround">-->
+				<MultiInput id="ExpStckMatGrpFromId" value="" tokenUpdate="onDeleteMatGrp" placeholder="From" showValueHelp="true"
+					valueHelpRequest="valueHelpRequestMaterialGrp"/>
+				<MultiInput value="" placeholder="To" showValueHelp="true" valueHelpRequest="valueHelpRequestMaterialGrp"
+					enabled="{baseModel>/enablematGrpTo}" id="ExpStckMatGrpToId" tokenUpdate="onDeleteMatGrp"/>
+				<!--</HBox>-->
+				<Label></Label>
+				<RadioButton text="Sales Unit" groupName="expiryStockGrp" select="onChangeSalesUnit"></RadioButton>
+				<RadioButton text="Base Unit" groupName="expiryStockGrp" select="onChangeBaseUnit"></RadioButton>
+				<core:Title/>
+				<Label text="Material Group4" design="Bold"></Label>
+				<!--<HBox alignContent="SpaceAround">-->
+				<MultiInput id="ExpStckMatGrp4FromId" value="" placeholder="From" showValueHelp="true" valueHelpRequest="valueHelpRequestMaterialGrp4"
+					tokenUpdate="onDeleteMatGrp4"/>
+				<MultiInput id="ExpStckMatGrp4ToId" placeholder="To" showValueHelp="true" valueHelpRequest="valueHelpRequestMaterialGrp4"
+					enabled="{baseModel>/enablematGrp4To}" change="onMaterialToChange" tokenUpdate="onDeleteMatGrp4"/>
+				<!--</HBox>-->
+				<Label text="Material" design="Bold"></Label>
+				<!--<HBox alignContent="SpaceAround">-->
+				<MultiInput placeholder="From" showValueHelp="false" id="ExpStckMatFromId" tokenUpdate="onMaterialFromDelete" change="onMaterialFromChange"/>
+				<MultiInput placeholder="To" showValueHelp="false" id="ExpStckMatToId" enabled="{baseModel>/enablematTo}" change="onMaterialFromChange"
+					tokenUpdate="onMaterialFromDelete"/>
+				<!--</HBox>-->
+				<Label></Label>
+				<CheckBox text="Unrestricted" select="onChangeUnrestricted"></CheckBox>
+				<CheckBox text="QI" select="onChangeInspection"></CheckBox>
+				<Label></Label>
+				<CheckBox text="Blocked" select="onChangeBlocked"></CheckBox>
+				<CheckBox text="Exclude FDA Stock" select="onChangeExcFDAStck"></CheckBox>
+				<Label></Label>
+				<Button text="Search" icon="sap-icon://search" type="Accept" press="expiryStockSearch"></Button>
+				<Button text="Clear" icon="sap-icon://refresh" type="Reject"></Button>
+			</f:content>
+		</f:SimpleForm>
+		<Table alternateRowColors="true" class="sapUiSizeCompact" items="{expiryTableModel>/results}" popinLayout="GridSmall">
+			<headerToolbar>
+				<Toolbar>
+					<Label text="Expiry Stock (2)" design="Bold"></Label>
+					<ToolbarSpacer></ToolbarSpacer>
+					<SearchField width="30%"></SearchField>
+					<Button text="Export" icon="sap-icon://download" type="Emphasized"/>
+					<Button icon="sap-icon://action-settings" press="onPressPersonalization"/>
+				</Toolbar>
+			</headerToolbar>
+			<columns>
+				<!--<Column demandPopin="true" minScreenWidth="Tablet" popinDisplay="Inline">-->
+				<!--	<Label text="Material Group" design="Bold"/>-->
+				<!--</Column>-->
+				<Column minScreenWidth="XSmall" demandPopin="true" popinDisplay="Inline"
+					visible="{tabPersonalizationModel>/personalizationData/userPersonaDto/5/status}">
+					<Label text="Material" design="Bold"/>
+				</Column>
+			
+				<Column minScreenWidth="XSmall" demandPopin="true"
+					popinDisplay="Inline"
+					visible="{tabPersonalizationModel>/personalizationData/userPersonaDto/9/status}">
+					<Label text="Long Batch" design="Bold"/>
+				</Column>
+				
+				<Column minScreenWidth="XSmall" demandPopin="true"
+					popinDisplay="Inline"
+					visible="{tabPersonalizationModel>/personalizationData/userPersonaDto/12/status}">
+					<Label text="RSL Days" design="Bold"/>
+				</Column>
+			
+				<Column minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline"
+					visible="{tabPersonalizationModel>/personalizationData/userPersonaDto/15/status}">
+					<Label text="SLoc" design="Bold"/>
+				</Column>
+				
+				<Column minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline"
+					visible="{tabPersonalizationModel>/personalizationData/userPersonaDto/0/status}">
+					<Label text="6 Months" design="Bold"/>
+				</Column>
+				
+				<Column minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline"
+					visible="{tabPersonalizationModel>/personalizationData/userPersonaDto/4/status}">
+					<Label text="Serial no." design="Bold"/>
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem type="Navigation" press="onPressDetailExpStk">
+					<VBox>
+						<Text text="{expiryTableModel>/}"></Text>
+						<Text text="{expiryTableModel>/}"></Text>
+					</VBox>
+					<VBox>
+						<Text text="{expiryTableModel>/}"></Text>
+						<Text text="{expiryTableModel>/}"></Text>
+					</VBox>
+					<Text text="{expiryTableModel>materialNum}"></Text>
+					<Text text="{expiryTableModel>materialDesc}"></Text>
+					<Text text="{expiryTableModel>vendorMat}"></Text>
+					<VBox>
+						<Text text="{expiryTableModel>materialGroup}"></Text>
+						<Text text="{expiryTableModel>matGroupDesc}"></Text>
+					</VBox>
+					<Text text="{expiryTableModel>materialGroup4}"></Text>
+					<Text text="{expiryTableModel>matGroup4Desc}"></Text>
+					<Text text="{expiryTableModel>batch}"></Text>
+					<Text text="{expiryTableModel>storageLocation}"></Text>
+					<Text text="{expiryTableModel>/}"></Text>
+					<Text text="{expiryTableModel>/}"></Text>
+					<Text text="{expiryTableModel>/}"></Text>
+					<Text text="{expiryTableModel>/}"></Text>
+					<Text text="{expiryTableModel>/}"></Text>
+					<Text text="{expiryTableModel>/}"></Text>
+					<Text text="{expiryTableModel>/}"></Text>
+					<Text text="{expiryTableModel>/}"></Text>
+				</ColumnListItem>
+			</items>
+		</Table>
+	</VBox>
+</core:FragmentDefinition>

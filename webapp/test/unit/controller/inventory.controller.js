@@ -1,0 +1,1 @@
+sap.ui.define(["dksh/connectclient/InventoryMatManagement/controller/inventory.controller"],function(n){"use strict";QUnit.module("inventory Controller");QUnit.test("I should test the inventory controller",function(t){var o=new n;o.onInit();t.ok(o)})});

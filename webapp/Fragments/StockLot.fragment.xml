@@ -1,0 +1,119 @@
+<core:FragmentDefinition xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns="sap.m">
+	<VBox>
+	<f:SimpleForm minWidth="1024" layout="ResponsiveGridLayout" maxContainerCols="2" editable="true" labelSpanL="4" labelSpanM="4"
+		emptySpanL="1" emptySpanM="1" columnsL="2" columnsM="2">
+		<f:content>
+			<core:Title/>
+			<Label text="Plant" design="Bold" required="true"></Label>
+			<Input value="" placeholder="From" showValueHelp="true" valueHelpRequest="valueHelpRequestPlant"/>
+			<Input value="" placeholder="To" showValueHelp="true" valueHelpRequest="valueHelpRequestPlant"/>
+			<Label text="SLoc" design="Bold"></Label>
+			<Input value="" placeholder="From" showValueHelp="true"/>
+			<Input value="" placeholder="To" showValueHelp="true"/>
+			<Label text="Material Group" design="Bold" required="true"></Label>
+			<Input value="" placeholder="From" showValueHelp="true"/>
+			<Input value="" placeholder="To" showValueHelp="true"/>
+			<Label text="Expiry Date" design="Bold"></Label>
+			<DatePicker placeholder="From" change="handleChange" class="sapUiSmallMarginBottom"/>
+			<DatePicker placeholder="To" change="handleChange" class="sapUiSmallMarginBottom"/>
+			<Label></Label>
+			<RadioButton text="Only Unrestricted" groupName="Grp1"></RadioButton>
+			<RadioButton text="Only QI" groupName="Grp1" select="true"></RadioButton>
+			<Label></Label>
+			<RadioButton text="Show All Stock" groupName="Grp1"></RadioButton>
+			<RadioButton text="Show Sales Unit Qty" groupName="Grp1" select="true"></RadioButton>
+			<Label></Label>
+			<RadioButton text="Include Buffer Stock" groupName="Grp1" select="true"></RadioButton>
+			<core:Title/>
+			<Label text="Sales Org" design="Bold" required="true"></Label>
+			<Input value="" placeholder="From" showValueHelp="true"/>
+			<Input value="" placeholder="To" showValueHelp="true"/>
+			<Label text="Material Ground 4" design="Bold"></Label>
+			<Input value="" placeholder="From" showValueHelp="true" valueHelpRequest="valueHelpRequestMaterialGrp4"/>
+			<Input value="" placeholder="To" showValueHelp="true" valueHelpRequest="valueHelpRequestMaterialGrp4"/>
+			<Label text="Material Number" design="Bold"></Label>
+			<Input value="" placeholder="From" showValueHelp="false"/>
+			<Input value="" placeholder="To" showValueHelp="false"/>
+			<Label></Label>
+			<CheckBox text="Show QTY"></CheckBox>
+			<CheckBox text="Show zero stock"></CheckBox>
+			<Label></Label>
+			<CheckBox text="Include Sales materials"></CheckBox>
+			<CheckBox text="Include Raw Materials"></CheckBox>
+			<Label></Label>
+			<Button text="Search" icon="sap-icon://search" type="Accept"></Button>
+			<Button text="Clear" icon="sap-icon://refresh" type="Reject"></Button>
+		</f:content>
+	</f:SimpleForm>
+	<!--<ScrollContainer vertical="true" width="100%" height="30rem">-->
+	<Table alternateRowColors="true" class="sapUiSizeCompact" growing="true" growingThreshold="10" items="{dummyModel>/data}">
+		<headerToolbar>
+			<Toolbar>
+				<!--<Label text="Expiry Stock (2)" design="Bold"></Label>-->
+				<ToolbarSpacer></ToolbarSpacer>
+				<SearchField width="30%"></SearchField>
+				<Button text="Export" icon="sap-icon://download" type="Emphasized"/>
+				<Button icon="sap-icon://action-settings"/>
+			</Toolbar>
+		</headerToolbar>
+		<columns>
+			<Column demandPopin="true" minScreenWidth="Tablet" popinDisplay="Inline" width="5%">
+				<Label text="Batch" design="Bold"/>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet" popinDisplay="Inline" visible="{PersonalizationModel>}">
+				<Label text="Material" design="Bold"/>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet" popinDisplay="Inline" visible="{PersonalizationModel>}">
+				<Label text="Vendor Mat." design="Bold"/>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet" popinDisplay="Inline" visible="{PersonalizationModel>}">
+				<Label text="LTP/Price" design="Bold"/>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet" popinDisplay="Inline" visible="{PersonalizationModel>}">
+				<Label text="Sales UOM" design="Bold"/>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet" popinDisplay="Inline" visible="{PersonalizationModel>}">
+				<Label text="On Hand" design="Bold"/>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet" popinDisplay="Inline" visible="{PersonalizationModel>}">
+				<Label text="On Order" design="Bold"/>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet" popinDisplay="Inline" visible="{PersonalizationModel>}">
+				<Label text="Available" design="Bold"/>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet" popinDisplay="Inline" visible="{PersonalizationModel>}">
+				<Label text="Unrest. Stock" design="Bold"/>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet" popinDisplay="Inline" visible="{PersonalizationModel>}">
+				<Label text="Block stock" design="Bold"/></Column>
+			<Column demandPopin="true" minScreenWidth="Tablet" popinDisplay="Inline" visible="{PersonalizationModel>}">
+				<Label text="QI Stock" design="Bold"/>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet" popinDisplay="Inline" visible="{PersonalizationModel>}">
+				<Label text="Principal" design="Bold"/>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet" popinDisplay="Inline" visible="{PersonalizationModel>}">
+				<Label text="Material Group 4" design="Bold"/>
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem>
+				<Button icon="sap-icon://megamenu" press="popOver"/>
+				<Text text="{dummyModel>Material}"></Text>
+				<Text text="{dummyModel>venMat}"></Text>
+				<Text text="{dummyModel>LTP}"></Text>
+				<Text text="{dummyModel>UOM}"></Text>
+				<Text text="{dummyModel>onHand}"></Text>
+				<Text text="{dummyModel>onOrder}"></Text>
+				<Text text="{dummyModel>available}"></Text>
+				<Text text="{dummyModel>unresStock}"></Text>
+				<Text text="{dummyModel>blockStock}"></Text>
+				<Text text="{dummyModel>inspecStock}"></Text>
+				<Text text="{dummyModel>principal}"></Text>
+				<Text text="{dummyModel>matGRp4}"></Text>
+			</ColumnListItem>
+		</items>
+	</Table>
+	<!--</ScrollContainer>-->
+	</VBox>
+</core:FragmentDefinition>

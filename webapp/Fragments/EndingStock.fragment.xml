@@ -1,0 +1,216 @@
+<core:FragmentDefinition xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns="sap.m">
+	<VBox>
+		<f:SimpleForm minWidth="1024" layout="ResponsiveGridLayout" maxContainerCols="2" editable="true" labelSpanL="4" labelSpanM="4"
+			emptySpanL="1" emptySpanM="1" columnsL="2" columnsM="2">
+			<f:content>
+				<core:Title/>
+				<Label text="Plant" design="Bold" required="true"></Label>
+				<MultiInput id="EndStckPlantFromId" value="{baseModel>/EndingStckplant}" placeholder="Enter Plant" showValueHelp="true"
+					valueHelpRequest="valueHelpRequestPlant" valueState="{baseModel>/EndingStckplantValueState}" tokenUpdate="onDeleteEndStckPlant"
+					valueHelpOnly="true">
+					<!--<Tokenizer tokenUpdate="onTokenRemove" tokens="{baseModel>/EndingStckplantTokens}">-->
+					<!--	<Token text="{baseModel>/}"/>-->
+					<!--</Tokenizer>-->
+				</MultiInput>
+				<Label text="SLoc" design="Bold"></Label>
+				<MultiInput value="" tokenUpdate="onDeleteStoLoc" placeholder="From" showValueHelp="true" valueHelpRequest="valueHelpRequestStoLoc"
+					id="EndStckSLocFromId" valueHelpOnly="true"/>
+				<MultiInput value="" placeholder="To" showValueHelp="true" valueHelpRequest="valueHelpRequestStoLoc" enabled="{baseModel>/enableSLocTo}"
+					id="EndStckSLocToId" tokenUpdate="onDeleteStoLoc" valueHelpOnly="true"/>
+				<!--Material Grp-->
+				<Label text="Material Group" design="Bold" required="true"></Label>
+				<MultiInput id="EndStckMatGrpFromId" value="" tokenUpdate="onDeleteMatGrp" placeholder="From" showValueHelp="true"
+					valueHelpRequest="valueHelpRequestMaterialGrp" valueHelpOnly="true"/>
+				<MultiInput value="" placeholder="To" showValueHelp="true" valueHelpRequest="valueHelpRequestMaterialGrp"
+					enabled="{baseModel>/enablematGrpTo}" id="EndStckMatGrpToId" tokenUpdate="onDeleteMatGrp" valueHelpOnly="true"/>
+				<Label></Label>
+				<!--radio btns-->
+				<RadioButton text="Vender Cons.Material" groupName="Grp1" select="onChangeVenConsMat" selected="{baseModel>/EndingStckSelVenConsMat}"></RadioButton>
+				<RadioButton text="Own. Stock Material" groupName="Grp1" select="onChangeOwnStkMat" selected="{baseModel>/EndingStckSelchngeOwnStkMat}"></RadioButton>
+				<Label></Label>
+				<RadioButton text="All Material" groupName="Grp1" select="onChangeAllMat" selected="{baseModel>/EndingStckSelAllMaterial}"></RadioButton>
+				<RadioButton text="By Ending Period" groupName="Grp1" select="onChangeEndingPer" selected="{baseModel>/EndingStckSelEndPrd}"></RadioButton>
+				<Label></Label>
+				<RadioButton text="By as at Date" groupName="Grp1" select="onChangeAsDate" selected="{baseModel>/EndingStckSelByAsDte}"></RadioButton>
+				<core:Title/>
+				<!--Material Grp4-->
+				<Label text="Material Group 4" design="Bold"></Label>
+				<MultiInput id="EndStckMatGrp4FromId" value="" placeholder="From" showValueHelp="true" valueHelpRequest="valueHelpRequestMaterialGrp4"
+					tokenUpdate="onDeleteMatGrp4" valueHelpOnly="true"/>
+				<MultiInput id="EndStckMatGrp4ToId" placeholder="To" showValueHelp="true" valueHelpRequest="valueHelpRequestMaterialGrp4"
+					enabled="{baseModel>/enablematGrp4To}" tokenUpdate="onDeleteMatGrp4" valueHelpOnly="true"/>
+				<!--Material-->
+				<Label text="Material" design="Bold"></Label>
+				<MultiInput placeholder="From" showValueHelp="false" id="EndStckMatFromId" tokenUpdate="onMaterialFromDelete" change="onMaterialFromChange"/>
+				<MultiInput placeholder="To" showValueHelp="false" id="EndStckMatToId" enabled="{baseModel>/enablematTo}" change="onMaterialFromChange"
+					tokenUpdate="onMaterialFromDelete"/>
+				<Label text="Vendor Mat." design="Bold"></Label>
+				<MultiInput placeholder="Enter Vendor Mat." showValueHelp="false" tokenUpdate="onMaterialFromDelete" change="onMaterialFromChange"/>
+				<!--date-->
+				<Label text="Date" design="Bold"></Label>
+				<DatePicker value="{baseModel>/endingStockDateFrom}" placeholder="From" class="sapUiSmallMarginBottom" change="onChangeFromDate"/>
+				<!--<DatePicker value="{baseModel>/endingStockDateTo}" placeholder="To" class="sapUiSmallMarginBottom" change="onChangeToDate"/>-->
+				<Label text="Month" design="Bold"/>
+				<DatePicker id="DP10" value="" displayFormat="MM-y" change="onChangeMonth" class="sapUiSmallMarginBottom"/>
+				<Label></Label>
+				<CheckBox text="Exclude FDA Stock" select="onChangeExcFDAStck"></CheckBox>
+				<Label></Label>
+				<Button text="Search" icon="sap-icon://search" type="Accept" press="endingStockSearch"></Button>
+				<Button text="Clear" icon="sap-icon://refresh" type="Reject" press="clearEndingStock"></Button>
+			</f:content>
+		</f:SimpleForm>
+		<Table alternateRowColors="true" class="sapUiSizeCompact" inset="false" fixedLayout="false" popinLayout="GridSmall">
+			<!--items="{endingStckTableModel>/results}"-->
+			<OverflowToolbar>
+			<!--<headerToolbar>-->
+				<Toolbar>
+					<!--<Label text="Expiry Stock (2)" design="Bold"></Label>-->
+					<ToolbarSpacer></ToolbarSpacer>
+					<SearchField width="30%"></SearchField>
+					<Button text="Export" icon="sap-icon://download" type="Emphasized" press="onExport"/>
+					<Button icon="sap-icon://action-settings" press="onPressPersonalization"/>
+				</Toolbar>
+			<!--</headerToolbar >-->
+			</OverflowToolbar>
+			<columns >
+				<Column visible="{tabPersonalizationModel>/personalizationData/userPersonaDto/0/status}" minScreenWidth="XSmall" demandPopin="true"
+					popinDisplay="Inline">
+					<Label text="Material" design="Bold"/>
+				</Column>
+				<Column visible="{tabPersonalizationModel>/personalizationData/userPersonaDto/3/status}" minScreenWidth="XSmall" demandPopin="true"
+					popinDisplay="Inline">
+					<Label text="SLoc" design="Bold"/>
+				</Column>
+				<Column popinDisplay="Inline" visible="{tabPersonalizationModel>/personalizationData/userPersonaDto/7/status}" minScreenWidth="XSmall"
+					demandPopin="true">
+					<Label text="Sales Qty" design="Bold"/></Column>
+				<!--<Column demandPopin="true" visible="{tabPersonalizationModel>/personalizationData/userPersonaDto/1/status}" minScreenWidth="Desktop"-->
+				<!--	popinDisplay="Inline">-->
+				<!--	<Label text="Old Mat No." design="Bold"/>-->
+				<!--</Column>-->
+				<Column minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline"
+					visible="{tabPersonalizationModel>/personalizationData/userPersonaDto/2/status}">
+					<Label text="Vendor Mat." design="Bold"/>
+				</Column>
+				<!--<Column >-->
+				<!--	<Label text="Material Des" design="Bold"/>-->
+				<!--</Column>-->
+				<Column minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline"
+					visible="{tabPersonalizationModel>/personalizationData/userPersonaDto/4/status}">
+					<Label text="Real Batch" design="Bold"/>
+				</Column>
+				<!--<Column minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline" -->
+				<!--	visible="{tabPersonalizationModel>/personalizationData/userPersonaDto/9/status}">-->
+				<!--	<Label text="Exp. Date" design="Bold"/>-->
+				<!--</Column>-->
+				<!--<Column minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline" -->
+				<!--	visible="{tabPersonalizationModel>/personalizationData/userPersonaDto/5/status}">-->
+				<!--	<Label text="Manu. Date" design="Bold"/>-->
+				<!--</Column>-->
+				<!--<Column minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline" -->
+				<!--	visible="{tabPersonalizationModel>/personalizationData/userPersonaDto/6/status}">-->
+				<!--	<Label text="Per Pack" design="Bold"/></Column>-->
+				<!--<Column >-->
+				<!--	<Label text="Sales Unit" design="Bold"/>-->
+				<!--</Column>-->
+				<!--<Column minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline" -->
+				<!--	visible="{tabPersonalizationModel>/personalizationData/userPersonaDto/8/status}">-->
+				<!--	<Label text="Value(LTP*QTY)" design="Bold"/>-->
+				<!--</Column>-->
+				<!--<Column minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline" -->
+				<!--	visible="{tabPersonalizationModel>/personalizationData/userPersonaDto/8/status}">-->
+				<!--	<Label text="Serial No." design="Bold"/>-->
+				<!--</Column>-->
+			</columns>
+			<items>
+				<!--<ColumnListItem>-->
+				<!--	<VBox>-->
+				<!--		<Text text="{endingStckTableModel>materialDesc}"></Text>-->
+				<!--		<Text text="{endingStckTableModel>materialNum}"></Text>-->
+				<!--	</VBox>-->
+				<!--	<Text text="{endingStckTableModel>storageLocationDesc}"></Text>-->
+				<!--	<Text text="{endingStckTableModel>storageLocation}"></Text>-->
+				<!--	<VBox>-->
+				<!--		<Text text="{endingStckTableModel>bigQuantity}"></Text>-->
+				<!--		<Text text="{endingStckTableModel>saleUnit}"></Text>-->
+				<!--	</VBox>-->
+				<!--	<Text text="{endingStckTableModel>oldCode}"></Text>-->
+				<!--	<Text text="{endingStckTableModel>vendorMatNum}"></Text>-->
+				<!--	<Text text="{endingStckTableModel>realBatch}"></Text>-->
+				<!--	<Text text="{endingStckTableModel>expireDate}"></Text>-->
+				<!--	<VBox wrap="Wrap">-->
+				<!--		<Text text="{endingStckTableModel>perPack}"></Text>-->
+				<!--		<Text text="{endingStckTableModel>}"></Text>-->
+				<!--	</VBox>-->
+				<!--	<Text text="{endingStckTableModel>value}"></Text>-->
+				<!--</ColumnListItem>-->
+				<ColumnListItem type="Navigation" press="onPressDetailEndStk">
+					<VBox>
+						<Text text="ABC 1234"></Text>
+						<Text text="12345"></Text>
+					</VBox>
+					<!--<Text text="{endingStckTableModel>storageLocationDesc}"></Text>-->
+					<Text text="0001"></Text>
+					<VBox>
+						<Text text="10"></Text>
+						<Text text="PC"></Text>
+					</VBox>
+					<Text text="12345"></Text>
+					<Text text="1234566"></Text>
+					<Text text="098765"></Text>
+					<Text text="12/01/2020"></Text>
+					<VBox wrap="Wrap">
+						<Text text="10"></Text>
+						<!--<Text text="{endingStckTableModel>}"></Text>-->
+					</VBox>
+					<Text text="100"></Text>
+					<Text text="100"></Text>
+				</ColumnListItem>
+				<ColumnListItem type="Navigation" detailPress="onPressDetail" press="onPressDetail">
+					<VBox>
+						<Text text="ABC 1234"></Text>
+						<Text text="12345"></Text>
+					</VBox>
+					<!--<Text text="{endingStckTableModel>storageLocationDesc}"></Text>-->
+					<Text text="0001"></Text>
+					<VBox>
+						<Text text="10"></Text>
+						<Text text="PC"></Text>
+					</VBox>
+					<Text text="12345"></Text>
+					<Text text="1234566"></Text>
+					<Text text="098765"></Text>
+					<Text text="12/01/2020"></Text>
+					<VBox wrap="Wrap">
+						<Text text="10"></Text>
+						<!--<Text text="{endingStckTableModel>}"></Text>-->
+					</VBox>
+					<Text text="100"></Text>
+					<Text text="100"></Text>
+				</ColumnListItem>
+				<ColumnListItem type="Navigation" detailPress="onPressDetail" press="onPressDetail">
+					<VBox>
+						<Text text="ABC 1234"></Text>
+						<Text text="12345"></Text>
+					</VBox>
+					<!--<Text text="{endingStckTableModel>storageLocationDesc}"></Text>-->
+					<Text text="0001"></Text>
+					<VBox>
+						<Text text="10"></Text>
+						<Text text="PC"></Text>
+					</VBox>
+					<Text text="12345"></Text>
+					<Text text="1234566"></Text>
+					<Text text="098765"></Text>
+					<Text text="12/01/2020"></Text>
+					<VBox wrap="Wrap">
+						<Text text="10"></Text>
+						<!--<Text text="{endingStckTableModel>}"></Text>-->
+					</VBox>
+					<Text text="100"></Text>
+					<Text text="100"></Text>
+				</ColumnListItem>
+			</items>
+		</Table>
+	</VBox>
+</core:FragmentDefinition>

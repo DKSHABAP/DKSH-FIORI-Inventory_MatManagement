@@ -1,0 +1,83 @@
+<core:FragmentDefinition xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns="sap.m">
+	<VBox>
+		<f:SimpleForm minWidth="1024" layout="ResponsiveGridLayout" maxContainerCols="2" editable="true" labelSpanL="4" labelSpanM="4"
+			emptySpanL="1" emptySpanM="1" columnsL="2" columnsM="2">
+			<f:content>
+				<core:Title/>
+				<!---->
+				<Label text="Sales Org" design="Bold" required="true"></Label>
+				<MultiInput value="" tokenUpdate="onDeleteStoLoc" placeholder="From" showValueHelp="true" valueHelpRequest="valueHelpRequestStoLoc"
+					id="ATPSLocFromId" valueHelpOnly="true"/>
+				<Label text="Material Group" design="Bold" required="true"></Label>
+				<MultiInput value="" placeholder="From" showValueHelp="true" valueHelpOnly="true"/>
+				<MultiInput value="" placeholder="To" showValueHelp="true" valueHelpOnly="true"/>
+				<Label text="Material Group4" design="Bold"></Label>
+				<MultiInput value="" placeholder="From" showValueHelp="true" valueHelpRequest="valueHelpRequestMaterialGrp4" valueHelpOnly="true"/>
+				<MultiInput value="" placeholder="To" showValueHelp="true" valueHelpRequest="valueHelpRequestMaterialGrp4" valueHelpOnly="true"/>
+				<core:Title/>
+				<Label text="Material" design="Bold"></Label>
+				<MultiInput value="" placeholder="From" showValueHelp="false"/>
+				<MultiInput value="" placeholder="To" showValueHelp="false"/>
+				<Label text="SLoc" design="Bold"></Label>
+				<MultiInput value="" placeholder="From" showValueHelp="true" valueHelpOnly="true"/>
+				<MultiInput value="" placeholder="To" showValueHelp="true" valueHelpOnly="true"/>
+				<Label text="Vendor Mat." design="Bold"></Label>
+				<MultiInput value="" placeholder="Enter Vendor Mat."/>
+				<Label></Label>
+				<CheckBox text="Batch Level" tooltip="Batch Level"></CheckBox>
+				<CheckBox text="SLoc Level" tooltip="SLoc Level"></CheckBox>
+				<Label></Label>
+				<Button text="Search" icon="sap-icon://search" type="Accept" press="ATPOverviewSearch"></Button>
+				<Button text="Clear" icon="sap-icon://refresh" type="Reject"></Button>
+			</f:content>
+		</f:SimpleForm>
+		<Table alternateRowColors="true" class="sapUiSizeCompact" popinLayout="GridSmall">
+			<headerToolbar>
+				<Toolbar>
+					<Label text="Expiry Stock (2)" design="Bold"></Label>
+					<ToolbarSpacer></ToolbarSpacer>
+					<SearchField width="30%"></SearchField>
+					<Button text="Export" icon="sap-icon://download" type="Emphasized"/>
+					<Button icon="sap-icon://action-settings"/>
+				</Toolbar>
+			</headerToolbar>
+			<columns>
+				<Column minScreenWidth="XSmall" demandPopin="true" popinDisplay="Inline" visible="{PersonalizationModel>/fields}">
+					<Label text="Material" design="Bold"/>
+				</Column>
+				<Column minScreenWidth="XSmall" demandPopin="true" popinDisplay="Inline" visible="{PersonalizationModel>/fields}">
+					<Label text="SLoc" design="Bold"/>
+				</Column>
+				<Column minScreenWidth="XSmall" demandPopin="true" popinDisplay="Inline" visible="{PersonalizationModel>/fields}">
+					<Label text="ATP Qty" design="Bold"/></Column>
+				<Column minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline" visible="{PersonalizationModel/fields>}">
+					<Label text="Batch" design="Bold"/>
+				</Column>
+				<Column minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline" visible="{PersonalizationModel>/fields}">
+					<Label text="Exp. Date" design="Bold"/>
+				</Column>
+				<Column minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline" visible="{PersonalizationModel>/fields}">
+					<Label text="Serial No." design="Bold"/>
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem type="Navigation" press="onPressDetailATP">
+					<VBox>
+						<Label text="ACCUTREND"></Label>
+						<Text text="28919402"></Text>
+					</VBox>
+					<Text text="TH05"></Text>
+					<Text text="28919402"></Text>
+					<Text text="30.09.2019"></Text>
+					<Text text="23"></Text>
+					<Text text="25"></Text>
+					<Text text="25"></Text>
+					<Text text="25"></Text>
+					<Text text="25"></Text>
+					<Text text="PC"></Text>
+					<Text text="2300"></Text>
+				</ColumnListItem>
+			</items>
+		</Table>
+	</VBox>
+</core:FragmentDefinition>

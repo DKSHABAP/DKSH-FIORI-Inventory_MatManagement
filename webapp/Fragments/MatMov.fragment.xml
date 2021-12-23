@@ -1,0 +1,106 @@
+<core:FragmentDefinition xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns="sap.m">
+	<VBox>
+		<f:SimpleForm minWidth="1024" layout="ResponsiveGridLayout" maxContainerCols="2" editable="true" labelSpanL="4" labelSpanM="4"
+			emptySpanL="1" emptySpanM="1" columnsL="2" columnsM="2">
+			<f:content>
+				<core:Title/>
+				<Label text="Plant" design="Bold" required="true"></Label>
+				<MultiInput value="" placeholder="Enter Plant" showValueHelp="true" valueHelpRequest="valueHelpRequestPlant"
+					valueState="{baseModel>/EndingStckplantValueState}" tokenUpdate="onDeleteExpStckPlant" id="MatMovPlantFromId"/>
+				<Label text="SLoc" design="Bold" required="true"></Label>
+				<MultiInput value="" tokenUpdate="onDeleteStoLoc" placeholder="From" showValueHelp="true" valueHelpRequest="valueHelpRequestStoLoc"
+					id="MatMovSLocFromId"/>
+				<Label text="Material Group" design="Bold" required="true"></Label>
+				<MultiInput id="MatMovMatGrpFromId" value="" tokenUpdate="onDeleteMatGrp" placeholder="From" showValueHelp="true"
+					valueHelpRequest="valueHelpRequestMaterialGrp"/>
+				<Label text="Batch" design="Bold"></Label>
+				<MultiInput value="" placeholder="Enter Batch" showValueHelp="false" id="MatMovBatchFromId" change="onChangeBatch"
+					tokenUpdate="onDeleteBatch"/>
+				<Label text="Vendor Mat." design="Bold"></Label>
+				<MultiInput value="" placeholder="Enter Vendor Material" showValueHelp="false" id="MatMovVenMatFromId" change="onChangeVenMat"
+					tokenUpdate="onDeleteVenMat"/>
+				<core:Title/>
+				<Label text="Material Group4" design="Bold"></Label>
+				<MultiInput id="MatMovMatGrp4FromId" value="" placeholder="From" showValueHelp="true" valueHelpRequest="valueHelpRequestMaterialGrp4"
+					tokenUpdate="onDeleteMatGrp4"/>
+				<Label text="Material" design="Bold"></Label>
+				<MultiInput placeholder="" showValueHelp="false" id="MatMovMatFromId" tokenUpdate="onMaterialFromDelete" change="onMaterialFromChange"/>
+				<Label text="Posting Date" design="Bold" required="true"></Label>
+				<DatePicker placeholder="From" change="onChangePostingDateFrom"/>
+				<DatePicker placeholder="To" change="onChangePostingDateTo"/>
+				<Label text="Movement Type" design="Bold"></Label>
+				<MultiInput value="" placeholder="Enter Movement Type" showValueHelp="true"/>
+				<Label text="Material Document" design="Bold"></Label>
+				<MultiInput value="" placeholder="Enter Material Document" showValueHelp="false" id="MatMovMatDocFromId" change="onChangeMatDoc"
+					tokenUpdate="onDeleteMatDoc"/>
+				<Label></Label>
+				<Button text="Search" icon="sap-icon://search" type="Accept" press="matMovSearch"></Button>
+				<Button text="Clear" icon="sap-icon://refresh" type="Reject"></Button>
+			</f:content>
+		</f:SimpleForm>
+		<Table alternateRowColors="true" class="sapUiSizeCompact" popinLayout="GridSmall">
+			<headerToolbar>
+				<Toolbar>
+					<!--<Label text="Expiry Stock (2)" design="Bold"></Label>-->
+					<ToolbarSpacer></ToolbarSpacer>
+					<SearchField width="30%"></SearchField>
+					<Button text="Export" icon="sap-icon://download" type="Emphasized"/>
+					<Button icon="sap-icon://action-settings"/>
+				</Toolbar>
+			</headerToolbar>
+			<columns>
+				<Column minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline" visible="{PersonalizationModel>}">
+					<Label text="Mat. Doc." design="Bold"/>
+				</Column>
+				<Column minScreenWidth="XSmall" demandPopin="true" popinDisplay="Inline" visible="{PersonalizationModel>}">
+					<Label text="Material" design="Bold"/>
+				</Column>
+				<Column minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline" visible="{PersonalizationModel>}">
+					<Label text="Real Batch" design="Bold"/></Column>
+				<Column minScreenWidth="XSmall" demandPopin="true" popinDisplay="Inline" visible="{PersonalizationModel>}">
+					<Label text="Qty" design="Bold"/>
+				</Column>
+				<Column minScreenWidth="XSmall" demandPopin="true" popinDisplay="Inline" visible="{PersonalizationModel>}">
+					<Label text="Sales Unit" design="Bold"/>
+				</Column>
+				<Column minScreenWidth="XSmall" demandPopin="true" popinDisplay="Inline" visible="{PersonalizationModel>}">
+					<Label text="Movement" design="Bold"/>
+				</Column>
+				<Column minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline" visible="{PersonalizationModel>}">
+					<Label text="Serial No." design="Bold"/>
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem type="Navigation" press="onPressDetailMatMov">
+					<Text text="122345"></Text>
+					<Text text="30.09.2019"></Text>
+					<VBox>
+						<Text text="100130482"></Text>
+						<Text text="ACCUTREND GLUCOSE 25 1X25TEST"></Text>
+					</VBox>
+					<Text text="28919402"></Text>
+					<Text text="28919402"></Text>
+					<VBox>
+						<Text text="28919411"></Text>
+						<Text text="ACCUTREND GLUCOSE"></Text>
+					</VBox>
+					<Text text="30.09.2019"></Text>
+					<Text text="28919411"></Text>
+					<Text text="TH1"></Text>
+					<Text text="TH01"></Text>
+					<Text text="23"></Text>
+					<Text text="10"></Text>
+					<Text text="PC"></Text>
+					<Text text="25"></Text>
+					<VBox>
+						<Text text="QWER"></Text>
+						<Text text="Mat Mov Desc"></Text>
+					</VBox>
+					<Text text="ASD"></Text>
+					<Text text="1234567"></Text>
+					<Text text="QWER"></Text>
+				</ColumnListItem>
+			</items>
+		</Table>
+	</VBox>
+</core:FragmentDefinition>
