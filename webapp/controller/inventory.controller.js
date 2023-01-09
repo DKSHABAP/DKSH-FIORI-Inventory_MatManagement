@@ -4,27 +4,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/model/json/JSONModel", "sap
 	"use strict";
 	return e.extend("dksh.connectclient.InventoryMatManagement.controller.inventory", {
 		formatter: o,
-		// _doAjax: function (e, t, s, r) {
-		// 	if (r && this.PrevAjax) {
-		// 		this.PrevAjax.abort()
-		// 	}
-		// 	if (s) {
-		// 		s = JSON.stringify(s)
-		// 	}
-		// 	var a = $.ajax({
-		// 		url: e,
-		// 		method: t,
-		// 		headers: {
-		// 			Accept: "application/json,text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3",
-		// 			"Content-Type": "application/json"
-		// 		},
-		// 		data: s || ""
-		// 	});
-		// 	if (r) {
-		// 		this.PrevAjax = a
-		// 	}
-		// 	return a
-		// },
 		_doAjax: function (sUrl, sMethod, oData, bAbort) {
 			if (bAbort && this.PrevAjax) {
 				this.PrevAjax.abort();
@@ -51,99 +30,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/model/json/JSONModel", "sap
 			return this.getOwnerComponent().getModel("i18n").getResourceBundle()
 		},
 		onAfterRendering: function () {
-			this.resourceBundle = this.getView().getModel("i18n").getResourceBundle()
+			this.resourceBundle = this.getView().getModel("i18n").getResourceBundle();
 		},
-		// onInit: function () {
-		// 	var e = this;
-		// 	this.getView().setModel(new t, "SeacrhParaModel");
-		// 	var s = new sap.ui.model.json.JSONModel;
-		// 	this.getView().setModel(s, "PersonalizationModel");
-		// 	var r = new sap.ui.model.json.JSONModel;
-		// 	this.getView().setModel(r, "tabPersonalizationModel");
-		// 	this._getUser();
-		// 	this.selectedBatchStkLot = [];
-		// 	this.selectedSalesOrg = [];
-		// 	this.plantToSelectedItems = [];
-		// 	this.selectedObjects = [];
-		// 	this.selectedVendorMatFrom = [];
-		// 	this.selectedVendorMatTo = [];
-		// 	this.selectedMatFromItems = [];
-		// 	this.selectedMatToItems = [];
-		// 	this.SLocToSelectedItems = [];
-		// 	this.SLocFromSelectedItems = [];
-		// 	this.plantFromSelectedItems = [];
-		// 	this.MatGrpFromSelectedItems = [];
-		// 	this.MatGrpToSelectedItems = [];
-		// 	this.MatGrp4FromSelectedItems = [];
-		// 	this.MatGrp4ToSelectedItems = [];
-		// 	this.selectedMatDocItems = [];
-		// 	this.selectedBatch = [];
-		// 	this.selectedVendorMat = [];
-		// 	this.selectedMovType = [];
-		// 	this.selectedMovType = [];
-		// 	this.salesOrgToSelectedItems = [];
-		// 	this.salesOrgFromSelectedItems = [];
-		// 	this.plantToSelectedItems = [];
-		// 	this.getView().getModel("PersonalizationModel").setProperty("/selectVarVisible", true);
-		// 	this.getView().getModel("PersonalizationModel").setProperty("/nameVarVisible", false);
-		// 	this.getView().getModel("PersonalizationModel").setProperty("/enableCheckBox", false);
-		// 	this.getView().getModel("PersonalizationModel").setProperty("/okPersBtnVisible", true);
-		// 	this.getView().getModel("PersonalizationModel").setProperty("/savePersBtnVisible", false);
-		// 	this.getView().getModel("PersonalizationModel").setProperty("/cancelPersBtnVisible", true);
-		// 	this.getView().getModel("PersonalizationModel").setProperty("/deletePersBtnVisible", false);
-		// 	this.getView().getModel("PersonalizationModel").setProperty("/createPersBtnVisible", true);
-		// 	this.getView().getModel("PersonalizationModel").setProperty("/editPersBtnVisible", true);
-		// 	this.getView().getModel("PersonalizationModel").setProperty("/varinatNameValueState", "None");
-		// 	this.getView().getModel("PersonalizationModel").refresh();
-		// 	var a = new sap.ui.model.json.JSONModel;
-		// 	this.getView().setModel(a, "baseModel");
-		// 	this.getView().getModel("baseModel").setProperty("/rowDesignATP", "Standard");
-		// 	this.getView().getModel("baseModel").setProperty("/enableSLocTo", true);
-		// 	this.getView().getModel("baseModel").setProperty("/enablematTo", true);
-		// 	this.getView().getModel("baseModel").setProperty("/enablematGrpTo", true);
-		// 	this.getView().getModel("baseModel").setProperty("/enablematGrp4To", true);
-		// 	this.getView().getModel("baseModel").setProperty("/enablePlantTo", true);
-		// 	this.getView().getModel("baseModel").setProperty("/enableSalesOrgTo", true);
-		// 	this.getView().getModel("baseModel").setProperty("/enableVendorMat", true);
-		// 	this.getView().getModel("baseModel").setProperty("/EndingStckSelAllMaterial", true);
-		// 	this.getView().getModel("baseModel").setProperty("/batchLevel", false);
-		// 	this.getView().getModel("baseModel").setProperty("/blocked", false);
-		// 	this.getView().getModel("baseModel").setProperty("/sLocLevel", false);
-		// 	this.getView().getModel("baseModel").setProperty("/serialNo", false);
-		// 	this.getView().getModel("baseModel").setProperty("/excludeFda", false);
-		// 	this.getView().getModel("baseModel").setProperty("/salesUnit", false);
-		// 	this.getView().getModel("baseModel").setProperty("/baseUnit", true);
-		// 	this.getView().getModel("baseModel").setProperty("/unrestricted", false);
-		// 	this.getView().getModel("baseModel").setProperty("/QI", false);
-		// 	this.getView().getModel("baseModel").setProperty("/rawMaterial", false);
-		// 	this.getView().getModel("baseModel").setProperty("/IncBufferStockStkLotVal", false);
-		// 	this.getView().getModel("baseModel").setProperty("/ShowSalesUqtyStkLotVal", false);
-		// 	this.getView().getModel("baseModel").setProperty("/ShowAllStocksStkLotVal", true);
-		// 	this.getView().getModel("baseModel").setProperty("/onlyQIStkLotVal", false);
-		// 	this.getView().getModel("baseModel").setProperty("/onlyUnrestStkLotVal", false);
-		// 	this.getView().getModel("baseModel").setProperty("/showStock", false);
-		// 	this.getView().getModel("baseModel").setProperty("/showQTY", false);
-		// 	this.getView().getModel("baseModel").setProperty("/salesMat", false);
-		// 	this.getView().getModel("baseModel").setProperty("/invoiceTableLength", "");
-		// 	this.allMaterials = "allMaterials eq " + "'X'";
-		// 	this.byEndingPeriod = "byEndingPeriod eq " + "'X'";
-		// 	this.onlyShowAllStk = "allStock eq " + "'X'";
-		// 	this.getView().getModel("baseModel").setProperty("/EndingStckSelVenConsMat", false);
-		// 	this.getView().getModel("baseModel").setProperty("/EndingStckSelchngeOwnStkMat", false);
-		// 	this.getView().getModel("baseModel").setProperty("/EndingStckSelEndPrd", true);
-		// 	this.getView().getModel("baseModel").setProperty("/EndingStckSelByAsDte", false);
-		// 	this.getView().getModel("baseModel").setProperty("/CollapseVisiblity", true);
-		// 	this.getView().getModel("baseModel").setProperty("/openVisiblity", false);
-		// 	this.getView().getModel("baseModel").setProperty("/SearchVisiblity", true);
-		// 	this.getView().getModel("baseModel").refresh();
-		// 	e.salesOrgDataAccess = "No Access";
-		// 	e.SLOCDataAccess = "No Access";
-		// 	e.distrChannelDataAccess = "No Access";
-		// 	e.divisionDataAccess = "No Access";
-		// 	e.materialGroupDataAccess = "No Access";
-		// 	e.materialGroup4DataAccess = "No Access";
-		// 	e.plantDataAccess = "No Access"
-		// },
 
 		onInit: function () {
 			var that = this;
@@ -235,8 +123,117 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/model/json/JSONModel", "sap
 			that.materialGroupDataAccess = "No Access";
 			that.materialGroup4DataAccess = "No Access";
 			that.plantDataAccess = "No Access";
-			that.materialDataAccess = "No Access"
+			that.materialDataAccess = "No Access";
 		},
+
+		// [+] START Modification: STRY0014745:MY Enhancements Defaulting mandatory fields -	JAYAMALARJ
+		_setDefaultMatGrp: function () {
+			var that = this;
+			var oComponent = that.getOwnerComponent();
+			var oModel = oComponent.getModel("ZDKSH_CC_INVENTORY_HDRLOOKUP_SRV");
+			//var oModel = this.getView().getModel("ZDKSH_CC_INVENTORY_HDRLOOKUP_SRV");
+			var filters = [];
+			var lang = "";
+			var lang = "";
+			if (sap.ushell) {
+				if (sap.ui.getCore().getConfiguration().getLanguage() === "th") {
+					lang = "2";
+				} else {
+					lang = "EN";
+				}
+			} else {
+				lang = "EN";
+			}
+			lang = lang.toUpperCase();
+
+			var oFilter = new sap.ui.model.Filter({
+				filters: [
+					new sap.ui.model.Filter("language", sap.ui.model.FilterOperator.EQ, lang),
+					new sap.ui.model.Filter("materialGroup", sap.ui.model.FilterOperator.EQ, that.materialGroupDataAccess)
+				],
+				and: true
+			});
+			var oMultiInputold = that.byId(that._getId("MatGrpFrom"));
+			oMultiInputold.destroyTokens();
+
+			filters.push(oFilter);
+			oModel.read("/ZSearchHelp_MaterialGroupSet", {
+				async: false,
+				filters: filters,
+				success: function (oRetrievedResult, oResponse) {
+					var DefMatGrpModel = new sap.ui.model.json.JSONModel({
+						"results": oRetrievedResult.results
+					});
+					var oMultiInput = that.byId(that._getId("MatGrpFrom"));
+					for (var i = 0; i < oRetrievedResult.results.length; i++) {
+						oMultiInput.addToken(new sap.m.Token({
+							text: oRetrievedResult.results[i].materialGroup
+						}));
+						that.MatGrp = "materialGroup eq" + "" + oRetrievedResult.results[i].materialGroup;
+						that.MatGrpFromSelectedItems = oRetrievedResult.results[i].materialGroup;
+					}
+				},
+				error: function (oError) {
+					/* do nothing */
+				}
+			});
+		},
+
+		_setDefaultPlant: function () {
+			var that = this;
+			//that._getPersonalizationDetails("keyMat.Movement");
+			// if (tabName !== "keyMat.Movement") {
+			//that.plantFrag = sap.ui.xmlfragment("dksh.connectclient.InventoryMatManagement.Fragments.plant", that);
+			//that.getView().addDependent(that.plantFrag);
+			var oComponent = that.getOwnerComponent();
+			var oModel = oComponent.getModel("ZDKSH_CC_INVENTORY_HDRLOOKUP_SRV");
+			//console.log(oModel.getMetadata());
+			var filters = [];
+			var lang = "";
+			var lang = "";
+			if (sap.ushell) {
+				if (sap.ui.getCore().getConfiguration().getLanguage() === "th") {
+					lang = "2";
+				} else {
+					lang = "EN";
+				}
+			} else {
+				lang = "EN";
+			}
+			lang = lang.toUpperCase();
+
+			var oFilter = new sap.ui.model.Filter({
+				filters: [
+					new sap.ui.model.Filter("language", sap.ui.model.FilterOperator.EQ, lang),
+					new sap.ui.model.Filter("plant", sap.ui.model.FilterOperator.EQ, that.plantDataAccess)
+				],
+				and: true
+			});
+			filters.push(oFilter);
+			oModel.read("/ZSearchHelp_PlantSet", {
+				async: false,
+				filters: filters,
+				success: function (oRetrievedResult, oResponse) {
+					var DefPlantModel = new sap.ui.model.json.JSONModel({
+						"results": oRetrievedResult.results
+					});
+					var oMultiInput = that.byId(that._getId("PlantFrom"));
+					for (var i = 0; i < oRetrievedResult.results.length; i++) {
+						oMultiInput.addToken(new sap.m.Token({
+							text: oRetrievedResult.results[i].plant
+						}));
+						that.plant = "plant eq" + "" + oRetrievedResult.results[i].plant;
+						that.plantFromSelectedItems = oRetrievedResult.results[i].plant;
+					}
+				},
+				error: function (oError) {
+					/* do nothing */
+				}
+			});
+			// }
+		},
+		// [+] END Modification: STRY0014745:MY Enhancements Defaulting mandatory fields -	JAYAMALARJ
+
 		_getUser: function () {
 			var e = "/services/userapi/attributes";
 			var t = new sap.m.BusyDialog;
@@ -247,47 +244,19 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/model/json/JSONModel", "sap
 				this.getView().setModel(s, "oUserModel");
 				this.getView().getModel("oUserModel").setProperty("/userID", e.name);
 				this.getView().getModel("oUserModel").setProperty("/email", e.email);
-				this._getUserDetail(e.name)
+				this._getUserDetail(e.name);
+				// [+] START Modification: STRY0014745:MY Enhancements Defaulting mandatory fields -	JAYAMALARJ
+				this.clearTabData();
+				this._getPersonalizationDetails("keyMat.Movement");
+				// [+] END Modification: STRY0014745:MY Enhancements Defaulting mandatory fields -	JAYAMALARJ
 			}, e => {
 				t.close();
 				s.error(e.responseText)
-			})
+			});
+			var that = this;
 		},
-		// _getUserDetail: function (e) {
-		// 	var t = this;
-		// 	var r = new sap.m.BusyDialog;
-		// 	r.open();
-		// 	var a = "/UserManagement/service/scim/Users/" + e;
-		// 	this._doAjax(a, "GET", "", true).then(e => {
-		// 		r.close();
-		// 		var s = e["urn:sap:cloud:scim:schemas:extension:custom:2.0:User"];
-		// 		if (s === undefined) {} else {
-		// 			for (var a = 0; a < s.attributes.length; a++) {
-		// 				if (s.attributes[a].name === "customAttribute1") {
-		// 					t.salesOrgDataAccess = s.attributes[a].value
-		// 				} else if (s.attributes[a].name === "customAttribute10") {
-		// 					t.SLOCDataAccess = s.attributes[a].value
-		// 				} else if (s.attributes[a].name === "customAttribute2") {
-		// 					t.distrChannelDataAccess = s.attributes[a].value
-		// 				} else if (s.attributes[a].name === "customAttribute3") {
-		// 					t.divisionDataAccess = s.attributes[a].value
-		// 				} else if (s.attributes[a].name === "customAttribute4") {
-		// 					t.materialGroupDataAccess = s.attributes[a].value
-		// 				} else if (s.attributes[a].name === "customAttribute5") {
-		// 					t.materialGroup4DataAccess = s.attributes[a].value
-		// 				} else if (s.attributes[a].name === "customAttribute9") {
-		// 					t.plantDataAccess = s.attributes[a].value
-		// 				}
-		// 			}
-		// 		}
-		// 	}, e => {
-		// 		r.close();
-		// 		s.error(e.responseText)
-		// 	})
-		// },
 
 		_getUserDetail: function (userId) {
-			// debugger;
 			var that = this;
 			var oModel = new sap.ui.model.json.JSONModel();
 			that.getView().setModel(oModel, "oModel");
@@ -346,7 +315,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/model/json/JSONModel", "sap
 			// data access control
 
 			// },
-
 		},
 		handleBack: function () {
 			var e = sap.ushell.Container.getService("CrossApplicationNavigation");
@@ -525,7 +493,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/model/json/JSONModel", "sap
 			// if (this.selectedTab !== "KeySelCust") {
 			this.clearTabData();
 			this._getPersonalizationDetails("keyMat.Movement")
-				// }
+			this._setDefaultPlant();
+			this._setDefaultMatGrp();
+			// }
 			this.getView().getModel("baseModel").setProperty("/SearchVisiblity", true);
 			this.getView().getModel("baseModel").refresh()
 		},
@@ -1239,8 +1209,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/model/json/JSONModel", "sap
 				s.error(t.responseText)
 			})
 		},
+
 		_getPersonalizationDetails: function (e) {
-			var t = this;
+			//	var t = this;
 			var r = "Web";
 			if (sap.ui.Device.system.phone === true) {
 				r = "Phone"
@@ -1257,23 +1228,30 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/model/json/JSONModel", "sap
 			this._doAjax(a, "POST", o, true).then(e => {
 				l.close();
 				if (e.userPersonaDto !== null) {
-					t.getView().getModel("PersonalizationModel").setProperty("/personalizationData", e);
-					t.getView().getModel("tabPersonalizationModel").setProperty("/personalizationData", e);
-					t.getView().getModel("tabPersonalizationModel").refresh();
-					t.getView().getModel("PersonalizationModel").refresh();
-					t.getView().getModel("PersonalizationModel").setProperty("/okPersBtnVisible", true);
-					t.getView().getModel("PersonalizationModel").setProperty("/savePersBtnVisible", false);
-					t.getView().getModel("PersonalizationModel").setProperty("/cancelPersBtnVisible", true);
-					t.getView().getModel("PersonalizationModel").setProperty("/deletePersBtnVisible", false);
-					t.getView().getModel("PersonalizationModel").setProperty("/createPersBtnVisible", true);
-					t.getView().getModel("PersonalizationModel").setProperty("/editPersBtnVisible", true);
-					t.getView().getModel("PersonalizationModel").setProperty("/varinatNameValueState", "None");
-					t.getView().getModel("PersonalizationModel").refresh()
+					this.getView().getModel("PersonalizationModel").setProperty("/personalizationData", e);
+					this.getView().getModel("tabPersonalizationModel").setProperty("/personalizationData", e);
+					this.getView().getModel("tabPersonalizationModel").refresh();
+					this.getView().getModel("PersonalizationModel").refresh();
+					this.getView().getModel("PersonalizationModel").setProperty("/okPersBtnVisible", true);
+					this.getView().getModel("PersonalizationModel").setProperty("/savePersBtnVisible", false);
+					this.getView().getModel("PersonalizationModel").setProperty("/cancelPersBtnVisible", true);
+					this.getView().getModel("PersonalizationModel").setProperty("/deletePersBtnVisible", false);
+					this.getView().getModel("PersonalizationModel").setProperty("/createPersBtnVisible", true);
+					this.getView().getModel("PersonalizationModel").setProperty("/editPersBtnVisible", true);
+					this.getView().getModel("PersonalizationModel").setProperty("/varinatNameValueState", "None");
+					this.getView().getModel("PersonalizationModel").refresh()
+				    // [+] START Modification: STRY0014745:MY Enhancements Defaulting mandatory fields -	JAYAMALARJ
+					this._setDefaultPlant();
+					this._setDefaultMatGrp();
+					// [+] END Modification: STRY0014745:MY Enhancements Defaulting mandatory fields -	JAYAMALARJ
 				}
 			}, e => {
 				l.close();
 				s.error(e.responseText)
 			})
+
+			//this._setDefaultPlant();
+			//this._setDefaultMatGrp();
 		},
 		onPressPersonalization: function (e) {
 			var t = this;
@@ -1294,7 +1272,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/model/json/JSONModel", "sap
 			this.FilterPersonalization.open()
 		},
 		onConfirmChangePlant: function (e) {
-			// debugger;
 			this.getView().getModel("baseModel").getData().EndingStckplantValueState = "None";
 			this.getView().getModel("baseModel").refresh();
 			e.getSource().getBinding("items").filter([]);
@@ -1320,6 +1297,10 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/model/json/JSONModel", "sap
 			} else {
 				if (e.getParameters().selectedContexts.length > 0) {
 					var t = this.byId(this._getId("PlantFrom"));
+					// [+] start Jayamalar
+					t.destroyTokens();
+					this.plantFromSelectedItems = [];
+					// [+] end Jayamalarñ
 					if (this.plantFromSelectedItems.length === 0) {
 						for (var r = 0; r < e.getParameters().selectedContexts.length; r++) {
 							this.plantFromSelectedItems.push(e.getParameters().selectedContexts[r].getObject().plant);
@@ -1608,6 +1589,11 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/model/json/JSONModel", "sap
 			} else {
 				if (e.getParameters().selectedContexts.length > 0) {
 					var t = this.byId(this._getId("MatGrpFrom"));
+					// [+] START Modification: STRY0014745:MY Enhancements Defaulting mandatory fields -	JAYAMALARJ
+					t.destroyTokens();
+					this.MatGrpFromSelectedItems = [];
+					this.MatGrpToSelectedItems = [];
+					// [+] END Modification: STRY0014745:MY Enhancements Defaulting mandatory fields -	JAYAMALARJ
 					if (this.MatGrpFromSelectedItems.length === 0) {
 						for (var r = 0; r < e.getParameters().selectedContexts.length; r++) {
 							this.MatGrpFromSelectedItems.push(e.getParameters().selectedContexts[r].getObject().materialGroup);
@@ -4933,7 +4919,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/model/json/JSONModel", "sap
 			}
 			var m = this.getView().getModel("ZDKSH_CC_INVENTORY_ENQUIRIES_SRV");
 			t = t + "&$format=json";
-			debugger;
 			var u = new sap.m.BusyDialog;
 			u.open();
 			$.ajax({
@@ -5381,30 +5366,33 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/model/json/JSONModel", "sap
 					t = t + " " + "and" + " " + a
 				}
 			}
-			if (this.salesOrgFromSelectedItems.length === 0) {
+			
+			// SalesOrgFromSelectedItems
+			// salesOrgFromSelectedItems
+			if (this.SalesOrgFromSelectedItems.length === 0) {
 				s.error("Fill all mandatory fields");
 				return
-			} else if (this.salesOrgFromSelectedItems.length === 1) {
-				if (this.salesOrgToSelectedItems.length === 1) {
-					r = "( salesOrg   ge " + "'" + this.salesOrgFromSelectedItems[0] + "'" + " and " + "salesOrg   le " + "'" + this.salesOrgToSelectedItems[
+			} else if (this.SalesOrgFromSelectedItems.length === 1) {
+				if (this.SalesOrgFromSelectedItems.length === 1) {
+					r = "( salesOrg   ge " + "'" + this.SalesOrgFromSelectedItems[0] + "'" + " and " + "salesOrg   le " + "'" + this.salesOrgToSelectedItems[
 						0] + "' )"
 				} else {
-					r = "salesOrg   eq " + "'" + this.salesOrgFromSelectedItems[0] + "'"
+					r = "salesOrg   eq " + "'" + this.SalesOrgFromSelectedItems[0] + "'"
 				}
 				if (t.length === 95) {
 					t = t + r
 				} else {
 					t = t + " " + "and" + " " + r
 				}
-			} else if (this.salesOrgFromSelectedItems.length > 1) {
-				for (var c = 0; c < this.salesOrgFromSelectedItems.length; c++) {
+			} else if (this.SalesOrgFromSelectedItems.length > 1) {
+				for (var c = 0; c < this.SalesOrgFromSelectedItems.length; c++) {
 					if (r === undefined) {
-						r = "(salesOrg eq " + "'" + this.salesOrgFromSelectedItems[c] + "'"
+						r = "(salesOrg eq " + "'" + this.SalesOrgFromSelectedItems[c] + "'"
 					} else {
-						if (c === this.salesOrgFromSelectedItems.length - 1) {
-							r = r + " " + "or" + " " + "salesOrg eq " + "'" + this.salesOrgFromSelectedItems[c] + "')"
+						if (c === this.SalesOrgFromSelectedItems.length - 1) {
+							r = r + " " + "or" + " " + "salesOrg eq " + "'" + this.SalesOrgFromSelectedItems[c] + "')"
 						} else {
-							r = r + " " + "or" + " " + "salesOrg eq " + "'" + this.salesOrgFromSelectedItems[c] + "'"
+							r = r + " " + "or" + " " + "salesOrg eq " + "'" + this.SalesOrgFromSelectedItems[c] + "'"
 						}
 					}
 				}
@@ -5414,6 +5402,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/model/json/JSONModel", "sap
 					t = t + " " + "and" + " " + r
 				}
 			}
+			
+			
 			if (this.SLocFromSelectedItems.length === 0) {
 				o = "storageLocation eq " + "'" + this.SLOCDataAccess + "'";
 				if (t.length === 95) {

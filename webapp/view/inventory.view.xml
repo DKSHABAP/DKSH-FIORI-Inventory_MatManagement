@@ -520,7 +520,7 @@
 					<!--</IconTabFilter>-->
 					<!--MATERIAL MOVEMENT-->
 					<IconTabFilter key="keyMat.Movement" text="{i18n>MaterialMovement}">
-						<!--<core:Fragment fragmentName="incture.com.Inventory.Fragments.MatMov" type="XML"/>-->
+						<!--<core:Fragment fragmentName="incture.com.Inventory.Fragments.MatMov" type="XML" "{i18n>MaterialMovement}"/>-->
 						<OverflowToolbar class="dkshToolbarStyle customTitle">
 							<Label text="{i18n>Search}" design="Bold"/>
 							<ToolbarSpacer/>
@@ -597,39 +597,38 @@
 									<Column minScreenWidth="Small" demandPopin="false" popinDisplay="Inline" visible="{PersonalizationModel>/personalizationData/userPersonaDto/8/status}">
 										<Label text="{i18n>SLoc}" design="Bold" tooltip="{i18n>SLoc}"/>
 									</Column>
-																		<Column minScreenWidth="Small" demandPopin="false" popinDisplay="Inline"
-										visible="{PersonalizationModel>/personalizationData/userPersonaDto/8/status}">
+										<Column minScreenWidth="Small" demandPopin="false" popinDisplay="Inline" visible="{PersonalizationModel>/personalizationData/userPersonaDto/9/status}">
 										<Label text="{i18n>SLOCDesc}" design="Bold" tooltip="{i18n>SLOCDesc}"/>
 									</Column>
-									<Column minScreenWidth="Small" demandPopin="false" popinDisplay="Inline" visible="{PersonalizationModel>/personalizationData/userPersonaDto/9/status}">
+									<Column minScreenWidth="Small" demandPopin="false" popinDisplay="Inline" visible="{PersonalizationModel>/personalizationData/userPersonaDto/10/status}">
 										<Label text="{i18n>GR/GIlocation}" design="Bold" tooltip="{i18n>GR/GIlocation}"/>
 									</Column>
-									<Column minScreenWidth="Small" demandPopin="false" popinDisplay="Inline" visible="{PersonalizationModel>/personalizationData/userPersonaDto/10/status}">
+									<Column minScreenWidth="Small" demandPopin="false" popinDisplay="Inline" visible="{PersonalizationModel>/personalizationData/userPersonaDto/11/status}">
 										<Label text="{i18n>PerPack}" design="Bold" tooltip="{i18n>PerPack}"/>
 									</Column>
-									<Column minScreenWidth="Desktop" demandPopin="false" popinDisplay="Inline" visible="{PersonalizationModel>/personalizationData/userPersonaDto/11/status}">
+									<Column minScreenWidth="Desktop" demandPopin="false" popinDisplay="Inline" visible="{PersonalizationModel>/personalizationData/userPersonaDto/12/status}">
 										<Label text="{i18n>Qty}" design="Bold" tooltip="{i18n>Qty}"/>
 									</Column>
 									<!--<Column minScreenWidth="Small" demandPopin="false" popinDisplay="Inline"-->
 									<!--	visible="{PersonalizationModel>/personalizationData/userPersonaDto/10/status}">-->
 									<!--	<Label text="{i18n>BaseUnit}" design="Bold"/>-->
 									<!--</Column>-->
-									<Column minScreenWidth="XSmall" demandPopin="true" popinDisplay="Inline" visible="{PersonalizationModel>/personalizationData/userPersonaDto/12/status}">
+									<Column minScreenWidth="XSmall" demandPopin="true" popinDisplay="Inline" visible="{PersonalizationModel>/personalizationData/userPersonaDto/13/status}">
 										<Label text="{i18n>SalesQty}" design="Bold" tooltip="{i18n>SalesQty}"/>
 									</Column>
-									<Column minScreenWidth="Small" demandPopin="false" popinDisplay="Inline" visible="{PersonalizationModel>/personalizationData/userPersonaDto/13/status}">
+									<Column minScreenWidth="Small" demandPopin="false" popinDisplay="Inline" visible="{PersonalizationModel>/personalizationData/userPersonaDto/14/status}">
 										<Label text="{i18n>SpcIND}" design="Bold" tooltip="{i18n>SpcIND}"/>
 									</Column>
-									<Column minScreenWidth="XSmall" demandPopin="true" popinDisplay="Inline" visible="{PersonalizationModel>/personalizationData/userPersonaDto/14/status}">
+									<Column minScreenWidth="XSmall" demandPopin="true" popinDisplay="Inline" visible="{PersonalizationModel>/personalizationData/userPersonaDto/15/status}">
 										<Label text="{i18n>Movement}" design="Bold" tooltip="Movement"/>
 									</Column>
-									<Column minScreenWidth="Small" demandPopin="false" popinDisplay="Inline" visible="{PersonalizationModel>/personalizationData/userPersonaDto/15/status}">
+									<Column minScreenWidth="Small" demandPopin="false" popinDisplay="Inline" visible="{PersonalizationModel>/personalizationData/userPersonaDto/16/status}">
 										<Label text="{i18n>DONumber}" design="Bold" tooltip="DO Number"/>
 									</Column>
-									<Column minScreenWidth="Small" demandPopin="false" popinDisplay="Inline" visible="{PersonalizationModel>/personalizationData/userPersonaDto/16/status}">
+									<Column minScreenWidth="Small" demandPopin="false" popinDisplay="Inline" visible="{PersonalizationModel>/personalizationData/userPersonaDto/17/status}">
 										<Label text="{i18n>HeaderNote}" design="Bold" tooltip="Header Note"/>
 									</Column>
-									<Column minScreenWidth="Small" demandPopin="true" popinDisplay="Inline" visible="{PersonalizationModel>/personalizationData/userPersonaDto/17/status}">
+									<Column minScreenWidth="Small" demandPopin="true" popinDisplay="Inline" visible="{PersonalizationModel>/personalizationData/userPersonaDto/18/status}">
 										<Label text="{i18n>SerialNo}" design="Bold"/>
 									</Column>
 								</columns>
