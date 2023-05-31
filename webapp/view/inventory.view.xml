@@ -12,7 +12,7 @@
 									<!--<core:Item key="keyATPOverviewEnquiry" text="{i18n>ATPOverview}"/>-->
 									<!--<core:Item key="keyEndingStockView" text="{i18n>EndingStock}"/>-->
 									<!--<core:Item key="keyExpiryStockView" text="{i18n>ExpiryStock}"/>-->
-					<!--				<core:Item key="keyMat.Movement" text="{i18n>MaterialMovement}"/>-->
+					<!--				<core:Item key="keyMat.Movement.Ind.Ind" text="{i18n>MaterialMovement}"/>-->
 									<!--<core:Item key="keyStkLotView" text="{i18n>StockLotandControlList}"/>-->
 					<!--			</ComboBox>-->
 					<!--		</f:content>-->
@@ -519,7 +519,7 @@
 					<!--	</VBox>-->
 					<!--</IconTabFilter>-->
 					<!--MATERIAL MOVEMENT-->
-					<IconTabFilter key="keyMat.Movement" text="{i18n>MaterialMovement}">
+					<IconTabFilter key="keyMat.Movement.Ind" text="{i18n>MaterialMovement}">
 						<!--<core:Fragment fragmentName="incture.com.Inventory.Fragments.MatMov" type="XML" "{i18n>MaterialMovement}"/>-->
 						<OverflowToolbar class="dkshToolbarStyle customTitle">
 							<Label text="{i18n>Search}" design="Bold"/>

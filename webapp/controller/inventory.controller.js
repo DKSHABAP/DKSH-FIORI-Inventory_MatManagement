@@ -181,8 +181,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/model/json/JSONModel", "sap
 
 		_setDefaultPlant: function () {
 			var that = this;
-			//that._getPersonalizationDetails("keyMat.Movement");
-			// if (tabName !== "keyMat.Movement") {
+			//that._getPersonalizationDetails("keyMat.Movement.Ind.Ind");
+			// if (tabName !== "keyMat.Movement.Ind") {
 			//that.plantFrag = sap.ui.xmlfragment("dksh.connectclient.InventoryMatManagement.Fragments.plant", that);
 			//that.getView().addDependent(that.plantFrag);
 			var oComponent = that.getOwnerComponent();
@@ -247,7 +247,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/model/json/JSONModel", "sap
 				this._getUserDetail(e.name);
 				// [+] START Modification: STRY0014745:MY Enhancements Defaulting mandatory fields -	JAYAMALARJ
 				this.clearTabData();
-				this._getPersonalizationDetails("keyMat.Movement");
+				this._getPersonalizationDetails("keyMat.Movement.Ind");
 				// [+] END Modification: STRY0014745:MY Enhancements Defaulting mandatory fields -	JAYAMALARJ
 			}, e => {
 				t.close();
@@ -492,7 +492,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/model/json/JSONModel", "sap
 			this.selectedTab = e.getParameters().selectedKey;
 			// if (this.selectedTab !== "KeySelCust") {
 			this.clearTabData();
-			this._getPersonalizationDetails("keyMat.Movement")
+			this._getPersonalizationDetails("keyMat.Movement.Ind")
 			this._setDefaultPlant();
 			this._setDefaultMatGrp();
 			// }
@@ -513,7 +513,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/model/json/JSONModel", "sap
 		},
 		onReportSelection: function (e) {
 			// this.selectedTab = e.getSource().getSelectedKey();
-			this.selectedTab = "keyMat.Movement";
+			this.selectedTab = "keyMat.Movement.Ind";
 			this.getView().byId("ID_TAB_BAR_PROV_APP").setSelectedKey(e.getSource().getSelectedKey());
 			// if (this.selectedTab !== "KeySelCust") {
 			this.clearTabData();
@@ -749,7 +749,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/model/json/JSONModel", "sap
 			var r = this;
 			var o = this.getView().getModel("oUserModel").getData().userID;
 			// this.selectedTab = this.getView().byId("ID_TAB_BAR_PROV_APP").getSelectedKey();
-			this.selectedTab = "keyMat.Movement";
+			this.selectedTab = "keyMat.Movement.Ind";
 			if (e) {
 				var l = e.getSource().getSelectedKey()
 			} else {
@@ -816,7 +816,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/model/json/JSONModel", "sap
 			this.selectedObjects = [];
 			this.getView().getModel("PersonalizationModel").refresh();
 			this.FilterPersonalization.close();
-			e._getPersonalizationDetails("keyMat.Movement")
+			e._getPersonalizationDetails("keyMat.Movement.Ind")
 		},
 		onVariantOK: function () {
 			var e = this;
@@ -1184,7 +1184,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/model/json/JSONModel", "sap
 				varaiantObject: r,
 				userId: t,
 				// applicationId: this.selectedTab,
-				applicationId: "keyMat.Movement",
+				applicationId: "keyMat.Movement.Ind",
 				varaintId: this.FilterPersonalization.getModel("FilterPersonalization").getProperty("/results/personalizationData/userPersonaDto")[
 					0].variantId
 			};
@@ -2376,7 +2376,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/model/json/JSONModel", "sap
 				var s = t
 			} else {
 				// var s = this.selectedTab
-				var s = "keyMat.Movement"
+				var s = "keyMat.Movement.Ind"
 			}
 			if (s === "keyATPOverviewEnquiry") {
 				if (e === "SalesOrgTo") {
@@ -2486,7 +2486,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/model/json/JSONModel", "sap
 					return "ExpStckVenMatToId"
 				}
 			}
-			if (s === "keyMat.Movement") {
+			if (s === "keyMat.Movement.Ind") {
 				if (e === "PlantFrom") {
 					return "MatMovPlantFromId"
 				}
@@ -4616,7 +4616,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/model/json/JSONModel", "sap
 			var d;
 			var h;
 			var p;
-			e._getPersonalizationDetails("keyMat.Movement")
+			e._getPersonalizationDetails("keyMat.Movement.Ind")
 			var c = this.getView().getModel("baseModel").getData();
 			if (this.plantFromSelectedItems.length === 0) {
 				s.error("Enter all the mandatory fields");
